@@ -1,6 +1,6 @@
 ARG upperroom_version=latest
 
-FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS install-image
+FROM python:3.9-slim AS compile-image
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     build-essential gcc python3-dev libpq-dev zlib1g-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -10,10 +10,10 @@ WORKDIR /django
 ENV POETRY_NO_INTERACTION=1 \
     PYTHONDONTWRITEBYTECODE=1
 RUN poetry install --no-dev --no-root
-RUN poetry build --format wheel && .venv/bin/pip install dist/*.whl
+RUN poetry build --format wheel
 
 
-FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS font-image
+FROM debian:buster-slim as font-image
 RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/apt/sources.list
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends \
@@ -25,9 +25,12 @@ RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -xvzf 
 
 
 FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
-COPY --from=install-image /django/dist/*.whl /django/thepoint.whl
+USER root
+COPY --from=compile-image /django/dist/*.whl /django/thepoint.whl
 COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
 RUN /django/.venv/bin/pip install /django/thepoint.whl && rm -f /django/thepoint.whl
+
+USER django:django
 
 ARG version
 ARG build_date
