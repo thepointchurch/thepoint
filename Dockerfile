@@ -26,9 +26,9 @@ RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -xvzf 
 
 FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
 USER root
-COPY --from=compile-image /django/dist/*.whl /django/thepoint.whl
+COPY --from=compile-image /django/dist/*.whl /django/
 COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
-RUN /django/.venv/bin/pip install /django/thepoint.whl && rm -f /django/thepoint.whl
+RUN /django/.venv/bin/pip install /django/*.whl && rm -f /django/*.whl
 
 USER django:django
 
