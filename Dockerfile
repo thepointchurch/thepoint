@@ -1,6 +1,10 @@
 ARG upperroom_version=latest
 
 FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS install-image
+RUN apt-get -y update && apt-get install -y --no-install-recommends \
+    build-essential gcc python3-dev libpq-dev zlib1g-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN pip install poetry=="1.1.4" wheel
 COPY . /django/
 WORKDIR /django 
 ENV POETRY_NO_INTERACTION=1 \
