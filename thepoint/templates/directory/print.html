@@ -1,6 +1,15 @@
 {% extends "directory/print_base.html" %}
 {% block "stylesheet" %}
 {{ block.super }}
+@page {
+    size: A5;
+    margin: 1cm 1cm 1cm 2.5cm;
+
+    @bottom-right {
+        font-family: "Fira Sans";
+    }
+}
+
 body {
     font-family: "Fira Sans";
     font-size: 8pt;

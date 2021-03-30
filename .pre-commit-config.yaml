@@ -1,19 +1,4 @@
 repos:
-- repo: local
-  hooks:
-  - id: migrations
-    name: Find missing Django migrations
-    entry: upperroom makemigrations --dry-run --check
-    language: python
-    types: [python]
-    pass_filenames: false
-    require_serial: true
-  - id: poetry-check
-    name: Validate the structure of the pyproject.toml file
-    entry: poetry check
-    language: system
-    files: pyproject.toml
-    pass_filenames: false
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v3.2.0
   hooks:
