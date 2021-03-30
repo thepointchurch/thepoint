@@ -29,6 +29,7 @@ USER root
 COPY --from=compile-image /django/dist/*.whl /django/
 COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
 RUN /django/.venv/bin/pip install /django/*.whl && rm -f /django/*.whl
+RUN ln -s upperroom /django/.venv/bin/thepoint && ln -s upperroom-sendrosteremails /django/.venv/bin/thepoint-sendrosteremails
 
 USER django:django
 
