@@ -33,7 +33,7 @@ nav#navbar a {
 nav#navbar a:before {
     width: 1.5rem;
     height: 1.5rem;
-    padding: 1.2rem;
+    padding: 1rem;
     flex-shrink: 0;
 }
 
@@ -131,7 +131,6 @@ aside.splash p {
     nav#navbar a:before {
         width: 2rem;
         height: 2rem;
-        padding: 1.2rem;
         flex-shrink: 0;
     }
 

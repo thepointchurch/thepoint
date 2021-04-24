@@ -62,6 +62,7 @@ body > header {
     padding: 1rem;
     box-sizing: border-box;
     justify-content: center;
+    position: relative;
 }
 
 body > header:before {
@@ -312,6 +313,7 @@ nav#navbar:focus-within ul {
 
 nav#navbar li {
     padding: 0.5rem;
+    margin-bottom: 0;
     display: block;
 }
 
@@ -320,6 +322,7 @@ nav#navbar a {
     text-decoration: none;
     text-transform: lowercase;
     display: block;
+    transition: color 300ms ease-in-out;
 }
 
 nav#navbar a:hover {
@@ -333,15 +336,14 @@ nav#navbar a:before {
     width: 1.5rem;
     height: 1.5rem;
     vertical-align: middle;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='14' fill='rgb(207,174,81)'/%3E%3C/svg%3E");
     display: inline-block;
+    background-color: rgb(207,174,81);
+    border-radius: 100vh;
+    transition: background 300ms ease-in-out;
 }
 
 nav#navbar a:hover:before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='14' fill='rgb(200,140,0)'/%3E%3C/svg%3E");
+    background-color: rgb(200,140,0);
 }
 
 nav#navbar-login p {
@@ -359,6 +361,10 @@ nav#navbar-member, nav#navbar-login {
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: height 3000ms ease-in-out;
 }
 
 nav#navbar-member:before, nav#navbar-login a {
@@ -382,7 +388,6 @@ nav#navbar-member:before, nav#navbar-login a {
 
 nav#navbar-member:hover:before,
 nav#navbar-member:focus-within:before {
-    margin-left: 3rem;
     margin-bottom: 0.5rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' fill='none'/%3E%3Cpolyline points='4 10 15 20 26 10' stroke-width='3' stroke-linecap='round' stroke='white'/%3E%3C/svg%3E");
 }
@@ -400,16 +405,28 @@ nav#navbar-member ul {
     margin: 0;
     padding: 0;
     display: none;
-}
-
-nav#navbar-member:hover ul,
-nav#navbar-member:focus-within ul {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 nav#navbar-member li {
     display: block;
     text-align: left;
+    height: 0;
+    width: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-bottom: 0;
+    transition: all 300ms ease-in-out;
+}
+
+nav#navbar-member:hover li,
+nav#navbar-member:focus-within li {
+    height: 2.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
 }
 
 nav#navbar-member a {
@@ -431,7 +448,9 @@ nav#navbar-member a:before {
 
 nav#navbar-member a {
     color: white;
-    padding-right: 0.3rem;
+    padding-right: 0.5rem;
+    width: 100%;
+    transition: background 300ms ease-in-out;
 }
 
 nav#navbar-member a:focus,
@@ -447,12 +466,15 @@ nav#navbar-member p.logon {
     margin: 0;
     text-align: center;
     font-size: 0.7rem;
-    display: none;
+    height: 0;
+    width: 0;
+    transition: all 300ms ease-in-out;
 }
 
 nav#navbar-member:hover p.logon,
 nav#navbar-member:focus-within p.logon {
-    display: block;
+    height: 2em;
+    width: auto;
 }
 
 .messages a {
