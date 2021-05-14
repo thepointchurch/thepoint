@@ -8,7 +8,7 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 
 ROOT_URLCONF = "thepoint.urls"
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en-au"
 TIME_ZONE = "Australia/Brisbane"
 
 WEBMASTER_EMAIL = "webmaster@thepoint.org.au"
@@ -17,3 +17,5 @@ ROSTER_EMAIL = "roster@thepoint.org.au"
 DEFAULT_FROM_EMAIL = WEBMASTER_EMAIL
 
 CSP_FRAME_SRC = ("'self'", "https://www.youtube-nocookie.com/embed/")
+
+LOCALE_PATHS = (BASE_DIR / "locale",)
