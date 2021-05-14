@@ -103,6 +103,10 @@ aside.splash p {
     text-align: center;
 }
 
+body > header form.search-bar {
+    bottom: 0;
+}
+
 @media screen and (min-width: 40em) {
     nav#navbar li {
         width: 25%;

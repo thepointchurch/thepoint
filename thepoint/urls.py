@@ -19,6 +19,7 @@ urlpatterns = ur_patterns + [
     path("resources/", include("upperroom.resources.urls", namespace="resources")),
     path("roster/", include("upperroom.roster.urls", namespace="roster")),
     path("news/", include("upperroom.weblog.urls", namespace="news")),
+    path("search/", include("upperroom.search.urls", namespace="search")),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
     path("", vary_on_cookie(flatpage), {"url": "/"}, name="home"),
     path("calendar", vary_on_cookie(flatpage), {"url": "/calendar/"}, name="calendar"),

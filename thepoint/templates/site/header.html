@@ -1,5 +1,7 @@
+{% load i18n %}
 {% load markup %}
 <header itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
 <h1 itemprop="name">{{ site.name }}</h1>
 {% if extended_site and extended_site.subtitle %}{{ site.extra.subtitle|markdown:"smarty" }}{% endif %}
+<form action="{% url 'search:index' %}" method="get" class="search-bar"><input type="text" name="q" placeholder="{% translate 'Search' %}" aria-label="search"/></form>
 </header>
