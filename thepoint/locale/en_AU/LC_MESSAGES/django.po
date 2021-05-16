@@ -11,3 +11,15 @@ msgstr ""
 
 msgid "weblog entries"
 msgstr "news"
+
+msgid "see all entries"
+msgstr "see all news"
+
+msgid "Weblog Entries"
+msgstr "Latest News"
+
+msgid "Weblog"
+msgstr "News"
+
+msgid "Check the latest weblog entries."
+msgstr "Check the latest news."
