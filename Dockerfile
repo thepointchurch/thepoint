@@ -5,12 +5,12 @@ USER root
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     build-essential gcc python3-dev libpq-dev zlib1g-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN pip install poetry=="1.1.4" wheel
+RUN pip install poetry=="1.1.8" wheel
 COPY . /django/
 WORKDIR /django 
 ENV POETRY_NO_INTERACTION=1 \
     PYTHONDONTWRITEBYTECODE=1
-RUN poetry install --no-dev --no-root
+RUN poetry install --no-root
 RUN poetry build --format wheel
 
 
