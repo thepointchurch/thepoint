@@ -77,13 +77,6 @@ body > header:before {
     background-repeat: no-repeat;
 }
 
-body > header h1 {
-    line-height: 3rem;
-    font-weight: 800;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-}
-
 body > header p {
     font-size: 1.8rem;
     font-weight: 300;
@@ -158,14 +151,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2.5rem;
-    text-align: left;
-    color: white;
-    margin: 0;
-    padding: 0 0 0.4rem;
-}
-
-h2 {
     font-size: 1.6rem;
     color: rgb(170,50,0);
     background: transparent;
@@ -176,7 +161,20 @@ h2 {
     border-bottom: 0.1rem solid;
 }
 
-h3 {
+body > header h1 {
+    line-height: 3rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    text-align: left;
+    color: white;
+    margin: 0;
+    border: 0;
+    padding: 0 0 0.4rem;
+}
+
+h2, main[itemprop=mainEntity] article h1, main section h1 {
     font-size: 1.3rem;
     color: rgb(170,50,0);
     background: transparent;
@@ -186,9 +184,10 @@ h3 {
     margin-right: 0.8rem;
     border-bottom: 0.1rem solid;
     margin-bottom: 0;
+    margin-top: 1rem;
 }
 
-h4 {
+h3, main[itemprop=mainEntity] article h2, main section h2 {
     font-size: 1.1rem;
     color: rgb(170,50,0);
     background: transparent;
@@ -196,9 +195,10 @@ h4 {
     padding: 0;
     margin-left: 0.8rem;
     margin-right: 0.8rem;
+    margin-top: 1rem;
 }
 
-h5 {
+h4 {
     font-size: 1rem;
     font-weight: 400;
     color: rgb(170,50,0);
@@ -615,7 +615,7 @@ table td {
     padding: 0;
 }
 
-div.family {
+.family {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -623,15 +623,15 @@ div.family {
     width: 100%;
 }
 
-div.family a {
+.family a {
     color: initial;
 }
 
-div.family a:hover {
+.family a:hover {
     color: rgb(200,0,0);
 }
 
-div.family h3 {
+.family h1 {
     flex-basis: 100%;
 }
 
@@ -640,30 +640,30 @@ div.family h3 {
     flex: 1 1 0;
 }
 
-div.family .family_people p {
+.family .family_people p {
     margin: 0;
     white-space: nowrap;
 }
 
-div.family .family_people a, div.family .links a {
+.family .family_people a, .family .links a {
     color: rgb(170,50,0);
 }
 
-div.family .family_people .label {
+.family .family_people .label {
     font-weight: 400;
 }
 
-div.family .family_address p {
+.family .family_address p {
     margin: 0;
     text-align: left;
 }
 
-div.family .family_address dl {
+.family .family_address dl {
     margin: 0;
     text-align: left;
 }
 
-div.family .family_photo img {
+.family .family_photo img {
     margin: 0;
 }
 
@@ -745,7 +745,7 @@ aside.splash {
     margin: 1rem;
 }
 
-aside.splash > h3 {
+aside.splash > h1 {
     margin: 0;
     text-align: center;
     border: none;
@@ -823,16 +823,16 @@ aside.splash > h3 {
         min-width: 50%;
     }
 
-    div.family {
+    .family {
         flex-direction: row;
     }
 
-    div.family .family_photo img {
+    .family .family_photo img {
         max-height: 15em;
         max-width: 20em;
     }
 
-    #search h3 {
+    #search h2 {
         margin: 2rem;
     }
 
@@ -863,7 +863,7 @@ aside.splash > h3 {
         color: rgb(170,170,170);
     }
 
-    div.family a {
+    .family a {
         color: white;
     }
 
