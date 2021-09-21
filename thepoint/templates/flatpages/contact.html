@@ -3,7 +3,7 @@
 {% load smartquote %}
 {% load static %}
 
-{% block title %}{{ block.super }}: {{ flatpage.title|smartquote }}{% endblock title %}
+{% block title %}{{ flatpage.title|smartquote }} | {{ block.super }}{% endblock title %}
 
 {% block heading %}{{ flatpage.title|smartquote }}{% endblock heading %}
 
