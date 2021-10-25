@@ -21,3 +21,11 @@ CSP_FRAME_SRC = ("'self'", "https://www.youtube-nocookie.com/embed/")
 LOCALE_PATHS = (BASE_DIR / "locale",)
 
 SITE_METADATA_IMAGE = "style/image.jpg"
+
+PASSWORD_HASHERS = (
+    "thepoint.hashers.LiteArgon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.BCryptPasswordHasher",
+)
