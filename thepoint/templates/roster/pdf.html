@@ -6,24 +6,6 @@ body {
     font-size: 11pt;
 }
 
-@page {
-    @bottom-left {
-        font-family: "Fira Sans";
-        font-size: 10pt;
-        font-weight: 200;
-        margin-bottom: 1cm;
-        content: "{{ site_name }} Assembly Roster {{ year }}";
-    }
-
-    @bottom-right {
-        font-family: "Fira Sans";
-        font-size: 10pt;
-        font-weight: 200;
-        margin-bottom: 1.5cm;
-        content: counter(page);
-    }
-}
-
 h1 {
     font-size: 24pt;
     font-weight: 200;
@@ -43,7 +25,7 @@ h2 {
 
 h3 {
     font-size: 12pt;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.3em;
 }
 
 p, li {
@@ -109,18 +91,17 @@ strong, b, .strong {
 }
 
 .meeting {
-    margin: 0.4em 0;
+    margin: 0.7em 0;
 }
 
 .meeting > p {
-    margin: 0.1em 0 0;
+    margin: 0.1em 0 0 1em;
     line-height: initial;
     font-size: 10pt;
 }
 
 .meeting > p.remote {
     color: rgb(255,0,0);
-    margin: 0.5em 0 0;
 }
 {% endblock "stylesheet" %}
 {% block "preamble" %}
@@ -317,11 +298,10 @@ a2x3rH8XL1hPQMMAT9siOrEUS81cDh/0n//Z" style="float: right; width: 4cm; height: 4
 </blockquote>
 
 <dl>
-<dt>2020 Ministry Team</dt>
+<dt>{{ year }} Ministry Team</dt>
 <dd>Nathan Holyoak</dd>
 <dd>Craig Holyoak</dd>
 <dd>James Graham</dd>
-<dd>David Graham</dd>
 <dd>Clifford Snell</dd>
 <dd>Isaac Bates</dd>
 </dl>
