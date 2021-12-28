@@ -1,6 +1,6 @@
 ARG upperroom_version=latest
 
-FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS compile-image
+FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS compile-image
 USER root
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     build-essential gcc python3-dev libpq-dev zlib1g-dev && \
@@ -14,7 +14,7 @@ RUN poetry install --no-root
 RUN poetry build --format wheel
 
 
-FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS font-image
+FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS font-image
 USER root
 RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/apt/sources.list
 RUN apt-get -y update
@@ -26,7 +26,7 @@ WORKDIR /usr/local/share/fonts
 RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -xvzf - Fira-4.106/otf --strip-components=2
 
 
-FROM docker.pkg.github.com/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
+FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
 USER root
 COPY --from=compile-image /django/dist/*.whl /django/
 COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
