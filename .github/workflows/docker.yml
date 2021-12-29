@@ -60,12 +60,14 @@ jobs:
           BRANCH="$(git branch --show-current)"
           if [ "$BRANCH" = "master" ]; then
               echo "::set-output name=tags::$IMAGE_ID:latest,$IMAGE_ID:${{ steps.version.outputs.version }}"
+          elsif [ -z "$BRANCH" ]; then
+              echo "::set-output name=tags::$IMAGE_ID:$(git describe --tags)"
           else
               echo "::set-output name=tags::$IMAGE_ID:$BRANCH"
           fi
           echo "::set-output name=build_date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           if [ "$BRANCH" = "master" ]; then
-              echo "::set-output name=upperroom_version::master"
+              echo "::set-output name=upperroom_version::latest"
           elif [ "$BRANCH" = "testing" ]; then
               echo "::set-output name=upperroom_version::testing"
           else
