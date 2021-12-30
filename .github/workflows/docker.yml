@@ -66,10 +66,8 @@ jobs:
               echo "::set-output name=tags::$IMAGE_ID:$BRANCH"
           fi
           echo "::set-output name=build_date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          if [ "$BRANCH" = "master" ]; then
+          if [ "$BRANCH" = "master" -o -z "$BRANCH" ]; then
               echo "::set-output name=upperroom_version::latest"
-          elif [ "$BRANCH" = "testing" ]; then
-              echo "::set-output name=upperroom_version::testing"
           else
               echo "::set-output name=upperroom_version::$BRANCH"
           fi
