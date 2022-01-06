@@ -1,6 +1,6 @@
 ARG upperroom_version=latest
 
-FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS compile-image
+FROM python:3.10-slim AS compile-image
 USER root
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     build-essential gcc python3-dev libpq-dev zlib1g-dev && \
@@ -11,26 +11,26 @@ COPY . /django/
 WORKDIR /django
 ENV POETRY_NO_INTERACTION=1 \
     PYTHONDONTWRITEBYTECODE=1
-RUN /usr/local/bin/poetry install --no-root
-RUN /usr/local/bin/poetry build --format wheel
+RUN /usr/local/bin/poetry install --no-root \
+    && /usr/local/bin/poetry build --format wheel
 
 
-FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS font-image
+FROM python:3.10-slim AS font-image
 USER root
-RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/apt/sources.list
-RUN apt-get -y update
-RUN apt-get install -y --no-install-recommends \
-    ca-certificates \
-    netbase \
-    ttf-mscorefonts-installer
-WORKDIR /usr/local/share/fonts
-RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -xvzf - Fira-4.106/otf --strip-components=2
+RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/apt/sources.list \
+    && apt-get -y update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        netbase \
+        ttf-mscorefonts-installer
+RUN mkdir /usr/local/share/fonts \
+    && wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -xvzf - Fira-4.106/otf --strip-components=2 -C /usr/local/share/fonts
 
 
 FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
 USER root
-COPY --from=compile-image /django/dist/*.whl /django/
 COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
+COPY --from=compile-image /django/dist/*.whl /django/
 RUN /django/.venv/bin/pip install /django/*.whl && rm -f /django/*.whl
 
 USER django:django

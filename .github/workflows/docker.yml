@@ -84,3 +84,5 @@ jobs:
             "upperroom_version=${{ steps.set_tags.outputs.upperroom_version }}"
           push: true
           tags: ${{ steps.set_tags.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

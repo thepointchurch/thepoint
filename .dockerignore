@@ -1,4 +1,4 @@
-Dockerfile
+Dockerfile*
 icon.*
 .git
 .github
@@ -6,3 +6,5 @@ icon.*
 **/__pycache__
 version.py
 data/
+.flake8
+.pre-commit-config.yaml
