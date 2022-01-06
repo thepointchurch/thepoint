@@ -3,7 +3,7 @@ from pathlib import Path
 from upperroom.settings import *  # NOQA: F403 pylint: disable=wildcard-import,unused-wildcard-import
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
-TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]  # NOQA: F405
+TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]  # NOQA: F405 pylint: disable=undefined-variable
 STATICFILES_DIRS = (BASE_DIR / "static",)
 
 ROOT_URLCONF = "thepoint.urls"
