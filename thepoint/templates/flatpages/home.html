@@ -13,7 +13,7 @@
 
 {% include "site/messages.html" %}
 
-<main itemprop="mainEntity" itemscope itemtype="http://schema.org/WebPageElement">
+<main id="main" itemprop="mainEntity" itemscope itemtype="http://schema.org/WebPageElement">
 <meta itemprop="name" content="{{ site.name }}" />
 
 {% if splashes_above %}{% include "splash/splash.html" with splashes=splashes_above %}{% endif %}
