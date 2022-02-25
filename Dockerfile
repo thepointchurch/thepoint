@@ -6,7 +6,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
     build-essential gcc python3-dev libpq-dev zlib1g-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN /usr/local/bin/pip install --upgrade pip && \
-    /usr/local/bin/pip install poetry=="1.1.12" wheel
+    /usr/local/bin/pip install poetry=="1.1.13" wheel
 COPY . /django/
 WORKDIR /django
 ENV POETRY_NO_INTERACTION=1 \
