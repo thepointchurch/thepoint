@@ -16,7 +16,7 @@ DIRECTORY_EMAIL = "directory@thepoint.org.au"
 ROSTER_EMAIL = "roster@thepoint.org.au"
 DEFAULT_FROM_EMAIL = WEBMASTER_EMAIL
 
-CSP_FRAME_SRC = ("'self'", "https://www.youtube-nocookie.com/embed/")
+CSP_FRAME_SRC = ("'self'", "https://www.youtube-nocookie.com/embed/", "https://calendar.google.com/calendar/")
 
 LOCALE_PATHS = (BASE_DIR / "locale",)
 
