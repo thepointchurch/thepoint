@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry>=1.1"]
+requires = ["poetry>=1.2"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry]
@@ -40,7 +40,7 @@ gitpython = "^3.1"
 pre-commit = "^2.16"
 pylint = "^2.12"
 semantic_version = "^2.8"
-tomlkit = "^<1.0"
+tomlkit = "^0"
 
 
 [tool.pylint.master]
