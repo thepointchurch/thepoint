@@ -15,7 +15,7 @@
 </nav>
 {% if user.is_authenticated %}
 <nav id="navbar-member" itemscope itemtype="https://schema.org/SiteNavigationElement" aria-label="Members’ Area" tabindex="0">
-{% cache None navbar_featured_private %}
+{% cache None navbar_featured_private request.user.username %}
 <ul>
 <li><a href="{% url 'members:index' %}" class="nav-members" itemprop="url">Members’ Home</a></li>
 {% for item in featured_private_items %}
@@ -30,8 +30,7 @@
 <li><a href="https://www.youtube.com/channel/UCqijp2IhhMN7irdU1TXe5Kw" class="nav-youtube" title="YouTube Channel" itemprop="url">YouTube</a></li>
 <li><a href="{% url 'members:logout' %}" class="nav-logout" title="Log out of the Members’ Area." itemprop="url">Logout</a></li>
 </ul>
-{% endcache %}
-{% cache None navbar_user request.user.username %}<p class="logon">You are logged in as {{ user.get_full_name }}</p>{% endcache %}
+<p class="logon">You are logged in as {{ user.get_full_name }}</p>{% endcache %}
 </nav>
 {% else %}
 <nav id="navbar-login" itemscope itemtype="https://schema.org/SiteNavigationElement"><a href="{% url 'members:index' %}" title="Login to the Members’ area." itemprop="url">Member Login</a></nav>
