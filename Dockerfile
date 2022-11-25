@@ -1,6 +1,6 @@
 ARG upperroom_version=latest
 
-FROM python:3.10-slim AS compile-image
+FROM python:3.11-slim AS compile-image
 USER root
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
     build-essential gcc python3-dev libpq-dev zlib1g-dev && \
@@ -15,7 +15,7 @@ RUN /usr/local/bin/poetry install --no-root \
     && /usr/local/bin/poetry build --format wheel
 
 
-FROM python:3.10-slim AS font-image
+FROM python:3.11-slim AS font-image
 USER root
 RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/apt/sources.list \
     && apt-get -y update \
