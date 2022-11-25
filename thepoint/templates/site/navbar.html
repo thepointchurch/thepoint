@@ -27,8 +27,8 @@
 <li><a href="{% url 'library:index' %}" class="nav-library" title="Search the The Point’s Library." itemprop="url">Library</a></li>
 <li><a href="{% url 'poi:index' %}" class="nav-poi" title="Read past issues of Points of Interest" itemprop="url">POI</a></li>
 <li><a href="{% url 'news:index' %}" class="nav-news" title="News items" itemprop="url">News</a></li>
-<li><a href="https://www.youtube.com/channel/UCqijp2IhhMN7irdU1TXe5Kw" class="nav-youtube" title="YouTube Channel" itemprop="url">YouTube</a></li>
-<li><a href="{% url 'members:logout' %}" class="nav-logout" title="Log out of the Members’ Area." itemprop="url">Logout</a></li>
+<li><a href="https://www.youtube.com/@thepointchurchau" class="nav-youtube" title="YouTube Channel" itemprop="url">YouTube</a></li>
+<li><form id="logout-form" method="post" action="{% url 'members:logout' %}">{% csrf_token %}<button type="submit" title="Log out of the Members’ Area.">Logout</button></form></li>
 </ul>
 <p class="logon">You are logged in as {{ user.get_full_name }}</p>{% endcache %}
 </nav>

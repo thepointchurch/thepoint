@@ -503,14 +503,31 @@ nav#navbar-member:focus-within li {
     margin-bottom: 0.5rem;
 }
 
-nav#navbar-member a {
+nav#navbar-member a,
+nav#navbar-member button {
     color: white;
     text-decoration: none;
     text-transform: lowercase;
     display: block;
 }
 
-nav#navbar-member a:before {
+nav#navbar-member form {
+    padding: 0;
+    width: 100%;
+}
+
+nav#navbar-member button {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: left;
+    background: transparent;
+}
+
+nav#navbar-member a:before,
+nav#navbar-member button:before {
     display: inline-block;
     width: 1.5rem;
     height: 1.5rem;
@@ -520,7 +537,8 @@ nav#navbar-member a:before {
     vertical-align: middle;
 }
 
-nav#navbar-member a {
+nav#navbar-member a,
+nav#navbar-member button {
     color: white;
     padding-right: 0.5rem;
     width: 100%;
@@ -528,7 +546,9 @@ nav#navbar-member a {
 }
 
 nav#navbar-member a:focus,
-nav#navbar-member a:hover {
+nav#navbar-member a:hover,
+nav#navbar-member button:focus,
+nav#navbar-member button:hover {
     background: rgba(170,50,0,0.5);
 }
 
@@ -723,7 +743,7 @@ form table.passwd {
     margin: auto;
 }
 
-input, textarea, select, select option {
+input, textarea, select, select option, button {
     font-family: 'Fira Sans', 'Verdana', sans-serif;
     font-weight: 300;
 }
