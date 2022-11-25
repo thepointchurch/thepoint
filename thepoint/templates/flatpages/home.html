@@ -1,6 +1,6 @@
 {% extends "site/base.html" %}
 {% load static %}
-{% load markup %}
+{% load markdownify %}
 {% load smartquote %}
 
 {% block stylesheets %}
@@ -18,7 +18,7 @@
 
 {% if splashes_above %}{% include "splash/splash.html" with splashes=splashes_above %}{% endif %}
 
-{{ flatpage.content|markdown:"extra,smarty" }}
+{{ flatpage.content|markdownify:"extra" }}
 
 {% include "site/navbar.html" %}
 

@@ -1,5 +1,5 @@
 {% extends "site/base.html" %}
-{% load markup %}
+{% load markdownify %}
 {% load smartquote %}
 {% load static %}
 
@@ -14,7 +14,7 @@
 
 {% block content %}
 <img itemprop="image" src="{% static 'style/building.jpg' %}"/>
-{{ flatpage.content|markdown:"extra,smarty" }}
+{{ flatpage.content|markdownify:"extra" }}
 {% endblock content %}
 
 {% block semantic %}
