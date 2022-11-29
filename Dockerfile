@@ -24,7 +24,7 @@ RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/
         netbase \
         ttf-mscorefonts-installer
 RUN mkdir /usr/local/share/fonts \
-    && wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -xvzf - Fira-4.106/otf --strip-components=2 -C /usr/local/share/fonts
+    && wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/local/share/fonts -xvzf - Fira-4.106/otf --strip-components=2
 
 
 FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
