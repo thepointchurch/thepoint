@@ -2,11 +2,8 @@ ARG upperroom_version=latest
 
 FROM python:3.11-slim AS compile-image
 USER root
-RUN apt-get -y update && apt-get install -y --no-install-recommends \
-    build-essential gcc python3-dev libpq-dev zlib1g-dev && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN /usr/local/bin/pip install --upgrade pip && \
-    /usr/local/bin/pip install "poetry~=1.4" wheel
+RUN /usr/local/bin/pip install --root-user-action=ignore --upgrade pip setuptools && \
+    /usr/local/bin/pip install --root-user-action=ignore "poetry~=1.4" wheel
 COPY . /django/
 WORKDIR /django
 ENV POETRY_NO_INTERACTION=1 \
@@ -31,7 +28,7 @@ FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-imag
 USER root
 COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
 COPY --from=compile-image /django/dist/*.whl /django/
-RUN /django/.venv/bin/pip install /django/*.whl && rm -f /django/*.whl
+RUN /django/.venv/bin/pip install --root-user-action=ignore /django/*.whl && rm -f /django/*.whl
 
 USER django:django
 
