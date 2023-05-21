@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry>=1.4"]
+requires = ["poetry>=1.5"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry]
@@ -18,7 +18,7 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.1",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     "Operating System :: OS Independent",
@@ -35,7 +35,7 @@ classifiers = [
 python = "^3.9"
 
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 coverage = "~7"
 gitpython = "~3"
 pre-commit = "~3"
