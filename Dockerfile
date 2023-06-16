@@ -14,12 +14,9 @@ RUN /usr/local/bin/poetry install --no-root \
 
 FROM python:3.11-slim AS font-image
 USER root
-RUN sed -i '/^deb http:\/\/deb.debian.org\/debian .* main$/ s/$/ contrib/' /etc/apt/sources.list \
+RUN sed -i '/^Components: main$/ s/$/ contrib/' /etc/apt/sources.list.d/debian.sources \
     && apt-get -y update \
-    && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        netbase \
-        ttf-mscorefonts-installer
+    && apt-get install -y --no-install-recommends ttf-mscorefonts-installer
 RUN mkdir /usr/local/share/fonts \
     && wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/local/share/fonts -xvzf - Fira-4.106/otf --strip-components=2
 
