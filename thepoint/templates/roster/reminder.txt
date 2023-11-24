@@ -4,7 +4,7 @@ This is a friendly reminder that you are rostered to serve this {{ date|date:"l,
 {% for role in role_list %}
   * {{ role.role.verb }}{% if role.location %} at {{ role.location|smartquote }}{% endif %}{% if role.description %} ({{ role.description|smartquote }}){% endif %}{% if role.people.count > 1 %} with {% for p in role.people.all|remove_person:person %}{% if not forloop.first %}, {% endif %}{{ p.fullname }}{% endfor %}{% endif %}{% endfor %}
 
-{% if date|date:"w" == "0" %}Please be at the building by 9:20 in order to meet with all those serving.
+{% if date|date:"w" == "0" %}Please be at the building by 9:10 in order to meet with all those serving.
 
 {% endif %}If you are unable to fulfill this role, please make other arrangements as soon as possible.
 
