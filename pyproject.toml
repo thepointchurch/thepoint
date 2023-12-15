@@ -24,22 +24,21 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 
 
 [tool.poetry.group.dev.dependencies]
 coverage = "~7"
 gitpython = "~3"
 pre-commit = "~3"
-pylint = "~2"
+pylint = "~3"
 semantic_version = "~2"
 tomlkit = "~0"
 
