@@ -1,0 +1,32 @@
+{% extends "directory/print_compact_base.html" %}
+{% block "stylesheet" %}
+{{ block.super }}
+@page {
+    size: A4 landscape;
+    margin: 1.5cm;
+
+    @bottom-left, @bottom-right {
+        font-family: "Fira Sans";
+    }
+}
+
+body {
+    font-family: "Fira Sans";
+    font-size: 8pt;
+}
+
+h1 {
+    font-size: 24pt;
+    font-weight: 200;
+    text-align: right;
+}
+
+p {
+    line-height: 1.5;
+}
+
+table {
+    width: 100%;
+}
+
+{% endblock "stylesheet" %}
