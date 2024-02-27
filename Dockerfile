@@ -3,7 +3,7 @@ ARG upperroom_version=latest
 FROM python:3.11-slim AS compile-image
 USER root
 RUN /usr/local/bin/pip install --root-user-action=ignore --upgrade pip setuptools && \
-    /usr/local/bin/pip install --root-user-action=ignore "poetry~=1.7" wheel
+    /usr/local/bin/pip install --root-user-action=ignore "poetry~=1.8" wheel
 COPY . /django/
 WORKDIR /django
 ENV POETRY_NO_INTERACTION=1 \
