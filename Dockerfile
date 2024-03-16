@@ -1,29 +1,28 @@
 ARG upperroom_version=latest
 
-FROM python:3.11-slim AS compile-image
-USER root
-RUN /usr/local/bin/pip install --root-user-action=ignore --upgrade pip setuptools && \
-    /usr/local/bin/pip install --root-user-action=ignore "poetry~=1.8" wheel
+FROM python:3.11-alpine AS compile-image
+RUN apk add --no-cache \
+         build-base \
+         libffi-dev
+RUN pip install --root-user-action=ignore --upgrade pip setuptools && \
+    pip install --root-user-action=ignore "poetry~=1.8" wheel
 COPY . /django/
 WORKDIR /django
 ENV POETRY_NO_INTERACTION=1 \
     PYTHONDONTWRITEBYTECODE=1
-RUN /usr/local/bin/poetry install --no-root \
-    && /usr/local/bin/poetry build --format wheel
+RUN poetry install --no-root \
+    && poetry build --format wheel
 
 
-FROM python:3.11-slim AS font-image
-USER root
-RUN sed -i '/^Components: main$/ s/$/ contrib/' /etc/apt/sources.list.d/debian.sources \
-    && apt-get -y update \
-    && apt-get install -y --no-install-recommends ttf-mscorefonts-installer
-RUN mkdir /usr/local/share/fonts \
-    && wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/local/share/fonts -xvzf - Fira-4.106/otf --strip-components=2
+FROM python:3.11-alpine AS font-image
+RUN apk add --no-cache msttcorefonts-installer \
+    && update-ms-fonts
+RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/share/fonts -xvzf - Fira-4.106/otf --strip-components=2 \
+    && fc-cache -f
 
 
 FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
-USER root
-COPY --from=font-image /usr/share/fonts/truetype/msttcorefonts /usr/local/share/fonts /usr/local/share/fonts/
+COPY --from=font-image /usr/share/fonts /usr/share/fonts/
 COPY --from=compile-image /django/dist/*.whl /django/
 RUN /django/.venv/bin/pip install --root-user-action=ignore /django/*.whl && rm -f /django/*.whl
 
