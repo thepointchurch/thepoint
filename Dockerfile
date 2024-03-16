@@ -15,7 +15,7 @@ RUN poetry install --no-root \
 
 
 FROM python:3.11-alpine AS font-image
-RUN apk add --no-cache msttcorefonts-installer \
+RUN apk add --no-cache msttcorefonts-installer fontconfig \
     && update-ms-fonts
 RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/share/fonts -xvzf - Fira-4.106/otf --strip-components=2 \
     && fc-cache -f
