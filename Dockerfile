@@ -24,6 +24,7 @@ RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /us
 FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-image
 COPY --from=font-image /usr/share/fonts /usr/share/fonts/
 COPY --from=compile-image /django/dist/*.whl /django/
+USER root
 RUN /django/.venv/bin/pip install --root-user-action=ignore /django/*.whl && rm -f /django/*.whl
 
 USER django:django
