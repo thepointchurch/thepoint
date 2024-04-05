@@ -1,6 +1,6 @@
 ARG upperroom_version=latest
 
-FROM python:3.11-alpine AS compile-image
+FROM python:3.12-alpine AS compile-image
 RUN apk add --no-cache \
          build-base \
          libffi-dev
@@ -14,7 +14,7 @@ RUN poetry install --no-root \
     && poetry build --format wheel
 
 
-FROM python:3.11-alpine AS font-image
+FROM python:3.12-alpine AS font-image
 RUN apk add --no-cache msttcorefonts-installer fontconfig \
     && update-ms-fonts
 RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/share/fonts -xvzf - Fira-4.106/otf --strip-components=2 \
