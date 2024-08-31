@@ -1,7 +1,6 @@
+{% extends "site/header.html" %}
 {% load i18n %}
-{% load markdownify %}
-<header itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<h1 itemprop="name">{{ site.name }}</h1>
-{% if extended_site and extended_site.subtitle %}{{ site.extra.subtitle|markdownify }}{% endif %}
+{% block header_area %}
+{{ block.super }}
 <form action="{% url 'search:index' %}" method="get" class="search-bar"><input type="text" name="q" placeholder="{% translate 'Search' %}" aria-label="search"/></form>
-</header>
+{% endblock header_area %}

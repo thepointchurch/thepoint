@@ -8,6 +8,7 @@
 {% block heading %}{{ flatpage.title|smartquote }}{% endblock heading %}
 
 {% block stylesheets %}
+{{ block.super }}
 <link type="text/css" href="{% static 'style/contact.css' %}" rel="stylesheet" />
 <link type="text/css" href="{% static 'style/contact.css' %}" rel="preload" as="style" />
 {% endblock stylesheets %}
