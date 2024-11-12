@@ -12,7 +12,7 @@ license = "GPL-2.0-only"
 readme = "README.md"
 repository = "https://github.com/thepointchurch/"
 homepage = "https://github.com/thepointchurch/"
-version = "2024.10.13"
+version = "2024.11.13"
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
