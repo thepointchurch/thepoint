@@ -23,3 +23,6 @@ msgstr "News"
 
 msgid "Check the latest weblog entries."
 msgstr "Check the latest news."
+
+msgid "archived"
+msgstr "Past Families"
