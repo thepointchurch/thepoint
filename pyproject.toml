@@ -37,7 +37,7 @@ python = "^3.11"
 [tool.poetry.group.dev.dependencies]
 coverage = "~7"
 gitpython = "~3"
-pre-commit = "~3"
+pre-commit = "~4"
 pylint = "~3"
 semantic_version = "~2"
 tomlkit = "~0"
