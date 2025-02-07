@@ -1,19 +1,13 @@
-[build-system]
-requires = ["poetry>=1.8"]
-build-backend = "poetry.masonry.api"
-
-[tool.poetry]
+[project]
 name = "thepoint"
+version = "2025.1.25"
 description = "A Django project for The Point Church's website."
-authors = [
-    "Craig Holyoak <craig@helmsdeep.org>",
-]
 license = "GPL-2.0-only"
 readme = "README.md"
-repository = "https://github.com/thepointchurch/"
-homepage = "https://github.com/thepointchurch/"
-version = "2025.1.25"
-
+requires-python = ">=3.11"
+authors = [
+    {name = "Craig Holyoak", email = "craig@helmsdeep.org"},
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
@@ -29,10 +23,17 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
+dependencies = []
+
+[project.urls]
+homepage = "https://github.com/thepointchurch/"
+repository = "https://github.com/thepointchurch/"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-
 
 [tool.poetry.group.dev.dependencies]
 coverage = "~7"
@@ -41,6 +42,13 @@ pre-commit = "~4"
 pylint = "~3"
 semantic_version = "~2"
 tomlkit = "~0"
+
+[tool.poetry.requires-plugins]
+poetry-plugin-shell = ">=1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 
 [tool.pylint.master]
