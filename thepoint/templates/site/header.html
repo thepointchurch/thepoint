@@ -2,5 +2,5 @@
 {% load i18n %}
 {% block header_area %}
 {{ block.super }}
-<form action="{% url 'search:index' %}" method="get" class="search-bar"><input type="text" name="q" placeholder="{% translate 'Search' %}" aria-label="search"/></form>
+<form action="{% url 'search:index' %}" method="get" class="search-bar"><input type="search" name="q" placeholder="{% translate 'Search' %}" aria-label="search"/></form>
 {% endblock header_area %}
