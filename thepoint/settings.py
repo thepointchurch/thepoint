@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from django.utils.csp import CSP
+
 from upperroom.settings import *  # NOQA: F403 pylint: disable=wildcard-import,unused-wildcard-import
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
@@ -16,11 +18,11 @@ DIRECTORY_EMAIL = "directory@thepoint.org.au"
 ROSTER_EMAIL = "roster@thepoint.org.au"
 DEFAULT_FROM_EMAIL = WEBMASTER_EMAIL
 
-CONTENT_SECURITY_POLICY["DIRECTIVES"]["frame-src"] = (  # NOQA: F405
-    "'self'",
+SECURE_CSP["frame-src"] = [  # NOQA: F405
+    CSP.SELF,
     "https://www.youtube-nocookie.com/embed/",
     "https://calendar.google.com/calendar/",
-)
+]
 
 LOCALE_PATHS = (BASE_DIR / "locale",)
 
