@@ -31,7 +31,7 @@ homepage = "https://github.com/thepointchurch/"
 repository = "https://github.com/thepointchurch/"
 
 [tool.poetry]
-requires-poetry = ">=2.2"
+requires-poetry = ">=2.3"
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -48,7 +48,7 @@ tomlkit = "~0"
 poetry-plugin-shell = ">=1.0.0"
 
 [build-system]
-requires = ["poetry-core>=2.2.0"]
+requires = ["poetry-core>=2.3.0"]
 build-backend = "poetry.core.masonry.api"
 
 
