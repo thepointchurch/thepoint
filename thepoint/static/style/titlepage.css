@@ -57,7 +57,7 @@ main div ~ div {
 
 main h2 {
     border: 0;
-    color: black;
+    color: var(--fg-color);
     text-align: center;
     text-transform: uppercase;
 }
@@ -191,11 +191,7 @@ body > header form.search-bar {
 }
 
 @media (prefers-color-scheme: dark) {
-    main h2 {
-        color: white;
-    }
-
     main div ~ div {
-        border-color: white;
+        border-color: var(--fg-color);
     }
 }
