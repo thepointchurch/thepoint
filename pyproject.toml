@@ -27,8 +27,8 @@ dependencies = [
 ]
 
 [project.urls]
-homepage = "https://github.com/thepointchurch/"
-repository = "https://github.com/thepointchurch/"
+homepage = "https://github.com/thepointchurch/thepoint"
+repository = "https://github.com/thepointchurch/thepoint"
 
 [tool.poetry]
 requires-poetry = ">=2.3"
