@@ -3,6 +3,7 @@ icon.*
 .git
 .github
 .gitignore
+.venv
 **/__pycache__
 version.py
 data/

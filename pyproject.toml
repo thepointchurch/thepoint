@@ -30,26 +30,24 @@ dependencies = [
 homepage = "https://github.com/thepointchurch/thepoint"
 repository = "https://github.com/thepointchurch/thepoint"
 
-[tool.poetry]
-requires-poetry = ">=2.3"
+[dependency-groups]
+dev = [
+    "coverage>=7,<8",
+    "gitpython>=3,<4",
+    "pre-commit>=4,<5",
+    "pylint>=3,<4",
+    "semantic_version>=2,<3",
+    "tomlkit>=0,<1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.13"
+[tool.uv]
 
-[tool.poetry.group.dev.dependencies]
-coverage = "~7"
-gitpython = "~3"
-pre-commit = "~4"
-pylint = "~3"
-semantic_version = "~2"
-tomlkit = "~0"
-
-[tool.poetry.requires-plugins]
-poetry-plugin-shell = ">=1.0.0"
+[tool.uv.build-backend]
+module-root = ""
 
 [build-system]
-requires = ["poetry-core>=2.3.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.10.2,<0.11.0"]
+build-backend = "uv_build"
 
 
 [tool.pylint.master]
