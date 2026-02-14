@@ -10,7 +10,7 @@ WORKDIR /django
 ENV PYTHONDONTWRITEBYTECODE=1 \
     UV_NO_DEV=1
 RUN uv build --wheel \
-    && uv sync --frozen --extra aws --extra cache --extra pgsql \
+    && uv sync --frozen --extra aws --extra cache --extra pgsql
 
 FROM python:3.13-alpine AS font-image
 RUN apk add --no-cache msttcorefonts-installer fontconfig \
