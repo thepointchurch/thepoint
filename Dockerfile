@@ -1,16 +1,12 @@
 ARG upperroom_version=latest
 
 FROM python:3.13-alpine AS compile-image
-RUN apk add --no-cache \
-         build-base \
-         linux-headers
 COPY --from=ghcr.io/astral-sh/uv:0.10.2-python3.13-alpine /usr/local/bin/uv /usr/local/bin/uvx /bin/
 COPY . /django/
 WORKDIR /django
 ENV PYTHONDONTWRITEBYTECODE=1 \
     UV_NO_DEV=1
-RUN uv build --wheel \
-    && uv sync --frozen --extra aws --extra cache --extra pgsql
+RUN uv build --wheel
 
 FROM python:3.13-alpine AS font-image
 RUN apk add --no-cache msttcorefonts-installer fontconfig \
@@ -23,7 +19,7 @@ FROM ghcr.io/thepointchurch/upperroom/upperroom:$upperroom_version AS build-imag
 COPY --from=font-image /usr/share/fonts /usr/share/fonts/
 COPY --from=compile-image /django/dist/*.whl /django/
 USER root
-RUN uv pip install /django/*.whl && rm -f /django/*.whl
+RUN /django/.venv/bin/pip install --root-user-action=ignore /django/*.whl && rm -f /django/*.whl
 
 USER django:django
 
