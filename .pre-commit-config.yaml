@@ -19,9 +19,14 @@ repos:
     hooks:
       - id: pylint
         name: pylint
-        entry: pylint
+        entry: uv run pylint
         language: system
         types: [python]
+      - id: pyproject-check
+        name: Validate the structure of the pyproject.toml file
+        entry: uvx --from=validate-pyproject[all] validate-pyproject
+        language: system
+        files: pyproject.toml
   - repo: https://github.com/pre-commit/mirrors-csslint
     rev: v1.0.5
     hooks:
@@ -31,6 +36,10 @@ repos:
     hooks:
       - id: yamllint
         args: [--strict]
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.10.2
+    hooks:
+      - id: uv-lock
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
