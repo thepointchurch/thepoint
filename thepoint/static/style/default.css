@@ -449,6 +449,7 @@ nav#navbar-member, nav#navbar-login {
     flex-direction: column;
     overflow: hidden;
     transition: height 3000ms ease-in-out;
+    z-index: 1;
 }
 
 nav#navbar-member:before, nav#navbar-login a {
@@ -772,6 +773,15 @@ select option:checked {
 
 ::-moz-selection {
     background-color: var(--icon-color);
+}
+
+div.media {
+    margin: 1em;
+    text-align: center;
+}
+
+div.media > audio, div.media > video {
+    width: 80%;
 }
 
 iframe {
