@@ -670,10 +670,6 @@ table td {
     width: 100%;
 }
 
-.family a {
-    color: initial;
-}
-
 .family a:hover {
     color: var(--hov-color);
 }
