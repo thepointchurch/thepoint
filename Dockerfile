@@ -1,14 +1,14 @@
 ARG upperroom_version=latest
 
-FROM python:3.13-alpine AS compile-image
-COPY --from=ghcr.io/astral-sh/uv:0.10.2-python3.13-alpine /usr/local/bin/uv /usr/local/bin/uvx /bin/
+FROM python:3.14-alpine AS compile-image
+COPY --from=ghcr.io/astral-sh/uv:0.12.6-python3.14-alpine /usr/local/bin/uv /usr/local/bin/uvx /bin/
 COPY . /django/
 WORKDIR /django
 ENV PYTHONDONTWRITEBYTECODE=1 \
     UV_NO_DEV=1
 RUN uv build --wheel
 
-FROM python:3.13-alpine AS font-image
+FROM python:3.14-alpine AS font-image
 RUN apk add --no-cache msttcorefonts-installer fontconfig \
     && update-ms-fonts
 RUN wget -qO - https://github.com/mozilla/Fira/archive/4.106.tar.gz | tar -C /usr/share/fonts -xvzf - Fira-4.106/otf --strip-components=2 \

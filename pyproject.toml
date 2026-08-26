@@ -4,7 +4,7 @@ version = "2025.6.14"
 description = "A Django project for The Point Church's website."
 license = "GPL-2.0-only"
 readme = "README.md"
-requires-python = ">=3.13,<3.14"
+requires-python = ">=3.13,<3.15"
 authors = [
     {name = "Craig Holyoak", email = "craig@helmsdeep.org"},
 ]
@@ -19,11 +19,12 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 dependencies = [
-    "django (>=6.0.2,<6.1.0)",
+    "django (>=6.1,<6.2.0)",
 ]
 
 [project.urls]
@@ -46,7 +47,7 @@ dev = [
 module-root = ""
 
 [build-system]
-requires = ["uv_build>=0.10.2,<0.11.0"]
+requires = ["uv_build>=0.12.6,<0.13.0"]
 build-backend = "uv_build"
 
 
