@@ -885,11 +885,21 @@ aside.splash > h1 {
     }
 
     #search h2 {
-        margin: 2rem;
+        margin: 1rem 2rem 0;
     }
 
     #search p {
         margin: 2rem 5rem;
+    }
+
+    #search p.links {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    #search p.metadata {
+        margin-top: 0.2rem;
+        margin-bottom: 0;
     }
 }
 
