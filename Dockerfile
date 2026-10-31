@@ -1,7 +1,7 @@
 ARG upperroom_version=latest
 
 FROM python:3.14-alpine AS compile-image
-COPY --from=ghcr.io/astral-sh/uv:0.12.6-python3.14-alpine /usr/local/bin/uv /usr/local/bin/uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.13.6-python3.14-alpine /usr/local/bin/uv /usr/local/bin/uvx /bin/
 COPY . /django/
 WORKDIR /django
 ENV PYTHONDONTWRITEBYTECODE=1 \
