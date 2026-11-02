@@ -1,6 +1,6 @@
 [project]
 name = "thepoint"
-version = "2025.6.14"
+version = "2026.11.2"
 description = "A Django project for The Point Church's website."
 license = "GPL-2.0-only"
 readme = "README.md"
